@@ -9,6 +9,9 @@
     },
     "rules": {
         "no-console": "off",
+        "no-plusplus": "off",
+        "no-unused-vars": "off",
+        "import/prefer-default-export": "off",
         "quotes": ["error", "double"],
         "indent": ["error", 4]
     }

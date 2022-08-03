@@ -116,7 +116,27 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/scss/styles.scss */ \"./src/assets/scss/styles.scss\");\n\n\nconsole.log(\"hello wepback\");\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/scss/styles.scss */ \"./src/assets/scss/styles.scss\");\n/* harmony import */ var _modules_pubsub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/pubsub */ \"./src/modules/pubsub.js\");\n/* harmony import */ var _modules_domStuff__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/domStuff */ \"./src/modules/domStuff.js\");\n\n\n\n\n\n// console.log(pubsub);\n\n_modules_pubsub__WEBPACK_IMPORTED_MODULE_1__.pubsub.publish(\"pageLoad\");\n\nconsole.log(\"hello wepback\");\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/domStuff.js":
+/*!*********************************!*\
+  !*** ./src/modules/domStuff.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _pubsub__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pubsub */ \"./src/modules/pubsub.js\");\n\n\nconsole.log(_pubsub__WEBPACK_IMPORTED_MODULE_0__.pubsub);\n\nconst domFunctions = (() => {\n    const addTextToPage = () => {\n        console.log(\"is this showing\");\n\n        const test = document.querySelector(\"#test\");\n\n        test.innerText = \"This is a test\";\n    };\n\n    _pubsub__WEBPACK_IMPORTED_MODULE_0__.pubsub.subscribe(\"pageLoad\", addTextToPage);\n\n    return {};\n})();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({ domFunctions });\n\n\n//# sourceURL=webpack://weather-app/./src/modules/domStuff.js?");
+
+/***/ }),
+
+/***/ "./src/modules/pubsub.js":
+/*!*******************************!*\
+  !*** ./src/modules/pubsub.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"pubsub\": () => (/* binding */ pubsub)\n/* harmony export */ });\n// const pubsub = {\n//     events: {},\n//     subscribe(eventName, fn) {\n//         this.events[eventName] = this.events[eventName] || [];\n//         this.events[eventName].push(fn);\n//     },\n//     unsubscribe(eventName, fn) {\n//         if (this.events[eventName]) {\n//             for (let i = 0; i < this.events[eventName].length; i++) {\n//                 if (this.events[eventName][i] === fn) {\n//                     this.events[eventName].splice(i, 1);\n//                     break;\n//                 }\n//             }\n//         }\n//     },\n//     publish(eventName, data) {\n//         if (this.events[eventName]) {\n//             this.events[eventName].forEach((fn) => {\n//                 fn(data);\n//             });\n//         }\n//     },\n// };\n\n// export { pubsub };\n\nconst pubsub = {\n    events: {},\n    subscribe(eventName, fn) {\n        this.events[eventName] = this.events[eventName] || [];\n        this.events[eventName].push(fn);\n    },\n    unsubscribe(eventName, fn) {\n        if (this.events[eventName]) {\n            for (let i = 0; i < this.events[eventName].length; i++) {\n                if (this.events[eventName][i] === fn) {\n                    this.events[eventName].splice(i, 1);\n                    break;\n                }\n            }\n        }\n    },\n    publish(eventName, data) {\n        if (this.events[eventName]) {\n            this.events[eventName].forEach((fn) => {\n                fn(data);\n            });\n        }\n    },\n};\n\n\n\n\n//# sourceURL=webpack://weather-app/./src/modules/pubsub.js?");
 
 /***/ })
 
