@@ -12,6 +12,7 @@
         "no-plusplus": "off",
         "no-unused-vars": "off",
         "import/named": "off",
+        "comma-dangle": "off",
         "import/prefer-default-export": "off",
         "quotes": ["error", "double"],
         "indent": ["error", 4]
