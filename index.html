@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <title>Weather App</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS Weather App</title>
+
+        <link href="assets/css/normalize.css" rel="stylesheet" />
+
+        <!-- Font Awesome -->
+        <script
+            src="https://kit.fontawesome.com/5899fa846f.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
-        <div id="test"></div>
+        <header>
+            <div class="wrap">
+                <h1>Weather App</h1>
+            </div>
+        </header>
+
+        <main class="warm">
+            <div class="wrap">
+                <form>
+                    <div class="field">
+                        <label for="location">Enter Location</label>
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="City Name, Country Code"
+                        />
+                    </div>
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </main>
 
         <script src="main.js"></script>
     </body>
