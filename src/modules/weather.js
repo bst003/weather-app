@@ -13,6 +13,7 @@ const weatherFunctions = (() => {
 
         const formattedData = {
             name: metricData.name,
+            country: metricData.sys.country,
             main: metricData.weather[0].main,
             description: metricData.weather[0].description,
             metricData: {

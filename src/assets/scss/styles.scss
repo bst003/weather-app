@@ -1,5 +1,115 @@
-$red: green;
+// Global Variables/Mixins/Extends
+////////////////////////////////////
+
+$primaryFont: 'Rubik', sans-serif;
+
+$white: #FEFEFE;
+$black: #111;
+
+$brandOne: #4b595e;
+$brandTwo: #ff6d6d; // hot
+$brandThree: #ffe963; // warm
+$brandFour: #8ad0ce; // cool
+$brandFive: #bdf7ff; // cold
+
+%transitions {
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+// Base Styles
+////////////////////////////////////
 
 html{
-    background-color: $red;
+    height: 100%;
+
+    *{
+        box-sizing: border-box;
+    }
+
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: $white;
+    color: $black;
+    font-family: $primaryFont;
+    line-height: 1.3;
+}
+
+
+.wrap{
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: min(86%, 1240px);
+}
+
+h1{
+    margin: 0px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+// Header
+////////////////////////////////////
+
+header{
+    padding: 12px 0px;
+    background-color: $brandOne;
+    color: $white;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .24);
+}
+
+// Main
+////////////////////////////////////
+
+main{
+    position: relative;
+    height: 100%;
+    @extend %transitions;
+
+    &::before{
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $white;
+        opacity: .45;
+        @extend %transitions;
+    }
+
+    &.hot{
+        &::before{
+            background-color: $brandTwo;
+        }
+    }
+
+    &.warm{
+        &::before{
+            background-color: $brandThree;
+        }
+    }
+
+    &.cool{
+        &::before{
+            background-color: $brandFour;
+        }
+    }
+
+    &.cold{
+        &::before{
+            background-color: $brandFive;
+        }
+    }
+
+    .wrap{
+        z-index: 2;
+    }
+
 }
