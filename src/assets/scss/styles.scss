@@ -4,7 +4,7 @@
 $primaryFont: 'Rubik', sans-serif;
 
 $white: #FEFEFE;
-$black: #111;
+$black: #222328;
 
 $brandOne: #4b595e;
 $brandTwo: #ff6d6d; // hot
@@ -12,6 +12,7 @@ $brandThree: #ffe963; // warm
 $brandFour: #8ad0ce; // cool
 $brandFive: #bdf7ff; // cold
 $brandSix: #82949B;
+$brandSeven: #125BBA;
 
 %transitions {
     -webkit-transition: all 0.2s ease-in;
@@ -111,7 +112,61 @@ main{
     }
 
     .wrap{
+        width: min(86%, 600px);
         z-index: 2;
+    }
+
+}
+
+// Form
+////////////////////////////////////
+
+form{
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+
+    .field{
+        width: 100%;
+
+        label{
+            display: block;
+            margin: 0px 0px 4px;
+            font-weight: 600;
+        }
+
+        input{
+            width: 100%;
+            height: 40px;
+            padding: 0px 10px;
+            background-color: $black;
+            border: 1px solid $brandOne;
+            border-radius: 4px;
+            color: $white;
+
+            &:focus{
+                outline: 1px solid $brandSeven;
+            }
+
+        }
+
+    }
+
+    button{
+        border: initial;
+        flex: 0 0 40px;
+        height: 40px;
+        background-color: $brandSeven;
+        border-radius: 4px;
+        color: $white;
+        cursor: pointer;
+        @extend %transitions;
+
+        &:hover,
+        &:focus{
+            background-color: darken($brandSeven, 10%);
+        }
+
     }
 
 }
