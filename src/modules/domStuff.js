@@ -41,6 +41,11 @@ const domFunctions = (() => {
         title.innerText = `${data.name}, ${data.country}`;
         resultBox.appendChild(title);
 
+        const description = document.createElement("p");
+        description.classList.add("desc");
+        description.innerText = `${data.main}, ${data.description}`;
+        resultBox.appendChild(description);
+
         _results.appendChild(resultBox);
     };
 
