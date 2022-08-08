@@ -1,9 +1,15 @@
 import { pubsub } from "./pubsub";
 
-console.log(pubsub);
-
 const domFunctions = (() => {
     // Private variables/functions
+    const _results = document.querySelector("#results");
+
+    const _clearContent = (parent) => {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    };
+
     const _processWeatherForm = (e) => {
         e.preventDefault();
 
@@ -21,8 +27,27 @@ const domFunctions = (() => {
         form.addEventListener("submit", _processWeatherForm);
     };
 
+    const clearResults = () => {
+        _clearContent(_results);
+    };
+
+    const displayWeatherResults = (data) => {
+        console.log(data);
+
+        const resultBox = document.createElement("div");
+        resultBox.classList.add("result-box");
+
+        const title = document.createElement("h3");
+        title.innerText = `${data.name}, ${data.country}`;
+        resultBox.appendChild(title);
+
+        _results.appendChild(resultBox);
+    };
+
     // Pubsubs
     pubsub.subscribe("pageLoad", addFormListeners);
+    pubsub.subscribe("displayData", clearResults);
+    pubsub.subscribe("displayData", displayWeatherResults);
 
     return {};
 })();
