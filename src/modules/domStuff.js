@@ -3,15 +3,26 @@ import { pubsub } from "./pubsub";
 console.log(pubsub);
 
 const domFunctions = (() => {
-    const addTextToPage = () => {
-        console.log("is this showing");
+    // Private variables/functions
+    const _processWeatherForm = (e) => {
+        e.preventDefault();
 
-        const test = document.querySelector("#test");
+        const location = document.querySelector("#location").value;
 
-        test.innerText = "This is a test";
+        console.log("form submitted");
+
+        pubsub.publish("submitForm", location);
     };
 
-    pubsub.subscribe("pageLoad", addTextToPage);
+    // Public variables/functions
+    const addFormListeners = () => {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", _processWeatherForm);
+    };
+
+    // Pubsubs
+    pubsub.subscribe("pageLoad", addFormListeners);
 
     return {};
 })();

@@ -8,7 +8,7 @@ import { weatherFunctions } from "./modules/weather";
 
 weatherFunctions.getData("Hershey, PA, US");
 
-// pubsub.publish("pageLoad");
+pubsub.publish("pageLoad");
 
 console.log("hello wepback");
 

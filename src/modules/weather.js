@@ -8,9 +8,8 @@ console.log(pubsub);
 // https://api.openweathermap.org/data/2.5/weather?q=hershey,pa,us&units=imperial&APPID=0d4e02963a957bd2504469564359c1de
 
 const weatherFunctions = (() => {
+    // Private variables/functions
     const _formatData = (metricData, imperialData) => {
-        console.log("test");
-
         const formattedData = {
             name: metricData.name,
             country: metricData.sys.country,
@@ -30,6 +29,8 @@ const weatherFunctions = (() => {
 
         return formattedData;
     };
+
+    // Public variables/functions
 
     const getData = async (location) => {
         console.log(location);
@@ -62,6 +63,9 @@ const weatherFunctions = (() => {
             console.log(err);
         }
     };
+
+    // Pubsubs
+    pubsub.subscribe("submitForm", getData);
 
     return {
         getData,
