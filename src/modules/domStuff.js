@@ -10,6 +10,17 @@ const domFunctions = (() => {
         }
     };
 
+    const _addAttributesLoop = (element, object, dataPrefix) => {
+        let prefix = "";
+        if (dataPrefix) {
+            prefix += `${dataPrefix}-`;
+        }
+
+        Object.entries(object).forEach(([key, value]) => {
+            element.setAttribute(`data-${prefix}${key}`, value);
+        });
+    };
+
     const _processWeatherForm = (e) => {
         e.preventDefault();
 
@@ -36,6 +47,8 @@ const domFunctions = (() => {
 
         const resultBox = document.createElement("div");
         resultBox.classList.add("result-box");
+        _addAttributesLoop(resultBox, data.metricData, "met");
+        _addAttributesLoop(resultBox, data.imperialData, "imp");
 
         const title = document.createElement("h3");
         title.innerText = `${data.name}, ${data.country}`;
