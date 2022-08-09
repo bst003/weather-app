@@ -51,18 +51,29 @@ const domFunctions = (() => {
 
         const tempContain = document.createElement("div");
         tempContain.classList.add("temp-contain");
-        tempContain.innerText = `${data.imperialData.temp}`;
+
+        const tempContainInfo = document.createElement("p");
+        tempContainInfo.innerText = `${data.imperialData.temp}`;
+        tempContain.appendChild(tempContainInfo);
 
         const minMax = document.createElement("div");
-        tempContain.classList.add("min-max");
+        minMax.classList.add("min-max");
 
         const max = document.createElement("p");
         max.classList.add("max");
-        max.innerText = `${data.imperialData.tempMax}`;
+        max.innerText = "max: ";
+
+        const maxSpan = document.createElement("span");
+        maxSpan.innerText = `${data.imperialData.tempMax}`;
+        max.appendChild(maxSpan);
 
         const min = document.createElement("p");
         min.classList.add("min");
-        min.innerText = `${data.imperialData.tempMin}`;
+        min.innerText = "min: ";
+
+        const minSpan = document.createElement("span");
+        minSpan.innerText = `${data.imperialData.tempMin}`;
+        min.appendChild(minSpan);
 
         minMax.appendChild(max);
         minMax.appendChild(min);

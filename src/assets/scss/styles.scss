@@ -206,4 +206,14 @@ form{
         text-align: center;
     }
 
+    .data{
+        display: flex;
+        gap: 12px;
+
+        >div{
+            flex: 1 1 50%;
+        }
+
+    }
+
 }
