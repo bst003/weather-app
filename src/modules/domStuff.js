@@ -46,6 +46,32 @@ const domFunctions = (() => {
         description.innerText = `${data.main}, ${data.description}`;
         resultBox.appendChild(description);
 
+        const weatherData = document.createElement("div");
+        weatherData.classList.add("data");
+
+        const tempContain = document.createElement("div");
+        tempContain.classList.add("temp-contain");
+        tempContain.innerText = `${data.imperialData.temp}`;
+
+        const minMax = document.createElement("div");
+        tempContain.classList.add("min-max");
+
+        const max = document.createElement("p");
+        max.classList.add("max");
+        max.innerText = `${data.imperialData.tempMax}`;
+
+        const min = document.createElement("p");
+        min.classList.add("min");
+        min.innerText = `${data.imperialData.tempMin}`;
+
+        minMax.appendChild(max);
+        minMax.appendChild(min);
+
+        weatherData.appendChild(tempContain);
+        weatherData.appendChild(minMax);
+
+        resultBox.appendChild(weatherData);
+
         _results.appendChild(resultBox);
     };
 
