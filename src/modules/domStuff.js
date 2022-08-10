@@ -88,6 +88,16 @@ const domFunctions = (() => {
         _clearContent(_results);
     };
 
+    const displayError = () => {
+        const errorMsg = document.createElement("p");
+        errorMsg.classList.add("error-msg");
+        errorMsg.innerText =
+            "It appears there was an error" +
+            " while attempting this search, please try checking your spelling and searching again";
+
+        _results.appendChild(errorMsg);
+    };
+
     const displayWeatherResults = (data) => {
         console.log(data);
 
@@ -157,6 +167,8 @@ const domFunctions = (() => {
     pubsub.subscribe("pageLoad", addFormListeners);
     pubsub.subscribe("displayData", clearResults);
     pubsub.subscribe("displayData", displayWeatherResults);
+    pubsub.subscribe("displayError", clearResults);
+    pubsub.subscribe("displayError", displayError);
 
     return {};
 })();

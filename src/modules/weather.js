@@ -59,6 +59,7 @@ const weatherFunctions = (() => {
         } catch (err) {
             console.log("this is an error");
             console.log(err);
+            pubsub.publish("displayError");
         }
     };
 
