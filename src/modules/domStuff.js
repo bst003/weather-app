@@ -21,6 +21,39 @@ const domFunctions = (() => {
         });
     };
 
+    const _toggleUnits = (e) => {
+        console.log(e);
+
+        const button = e.target;
+
+        const resultBox = e.target.parentElement;
+        const currentUnit = resultBox.getAttribute("data-current-unit");
+
+        button.innerText = `Show ${currentUnit}`;
+
+        const standardTemp = resultBox.querySelector(".temp-contain p");
+        const maxTemp = resultBox.querySelector(".max span");
+        const minTemp = resultBox.querySelector(".min span");
+
+        if (currentUnit === "imperial") {
+            resultBox.setAttribute("data-current-unit", "metric");
+
+            standardTemp.innerText = resultBox.getAttribute("data-met-temp");
+            maxTemp.innerText = resultBox.getAttribute("data-met-tempmax");
+            minTemp.innerText = resultBox.getAttribute("data-met-tempmin");
+        }
+
+        if (currentUnit === "metric") {
+            resultBox.setAttribute("data-current-unit", "imperial");
+
+            standardTemp.innerText = resultBox.getAttribute("data-imp-temp");
+            maxTemp.innerText = resultBox.getAttribute("data-imp-tempmax");
+            minTemp.innerText = resultBox.getAttribute("data-imp-tempmin");
+        }
+
+        console.log(resultBox);
+    };
+
     const _processWeatherForm = (e) => {
         e.preventDefault();
 
@@ -47,6 +80,7 @@ const domFunctions = (() => {
 
         const resultBox = document.createElement("div");
         resultBox.classList.add("result-box");
+        resultBox.setAttribute("data-current-unit", "imperial");
         _addAttributesLoop(resultBox, data.metricData, "met");
         _addAttributesLoop(resultBox, data.imperialData, "imp");
 
@@ -98,7 +132,8 @@ const domFunctions = (() => {
 
         const toggleButton = document.createElement("button");
         toggleButton.classList.add("toggle");
-        toggleButton.innerText = "Show Celsius";
+        toggleButton.innerText = "Show metric";
+        toggleButton.addEventListener("click", _toggleUnits);
 
         resultBox.appendChild(toggleButton);
 
