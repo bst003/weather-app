@@ -92,8 +92,7 @@ const domFunctions = (() => {
         const errorMsg = document.createElement("p");
         errorMsg.classList.add("error-msg");
         errorMsg.innerText =
-            "It appears there was an error" +
-            " while attempting this search, please try checking your spelling and searching again";
+            "It appears there was an error while attempting this search, please try checking your spelling and searching again";
 
         _results.appendChild(errorMsg);
     };

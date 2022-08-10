@@ -62,6 +62,22 @@ h3{
     font-weight: 700;
 }
 
+button{
+    padding: 10px;
+    background-color: $brandSeven;
+    border: initial;
+    border-radius: 4px;
+    color: $white;
+    font-weight: 600;
+    cursor: pointer;
+    @extend %transitions;
+
+    &:hover,
+    &:focus{
+        background-color: darken($brandSeven, 10%);
+    }
+}
+
 // Header
 ////////////////////////////////////
 
@@ -163,17 +179,7 @@ form{
         border: initial;
         flex: 0 0 50px;
         height: 40px;
-        background-color: $brandSeven;
-        border-radius: 4px;
-        color: $white;
-        cursor: pointer;
-        @extend %transitions;
-
-        &:hover,
-        &:focus{
-            background-color: darken($brandSeven, 10%);
-        }
-
+        padding: 0px;
     }
 
 }
@@ -194,10 +200,16 @@ form{
     background-color: $brandOne;
     border-radius: 4px;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .24);
+    text-align: center;
 
     h3{
         color: $white;
         text-align: center;
+    }
+
+    p{
+        margin: 0px;
+        color: $white;
     }
 
     .desc{
@@ -207,11 +219,47 @@ form{
     }
 
     .data{
+        margin: 8px 0px 0px;
         display: flex;
         gap: 12px;
 
         >div{
             flex: 1 1 50%;
+        }
+
+    }
+
+    .temp-contain{
+
+        p{
+            font-size: 40px;
+        }
+
+    }
+
+    .min-max{
+        margin: 0px 0px 12px;
+        text-align: left;
+
+        p{
+            &:not(:last-of-type){
+                margin: 0px 0px 5px;
+            }
+        }
+
+    }
+
+    .temp-contain,
+    .max,
+    .min{
+
+        p,
+        span{
+
+            &::after{
+                content: "\B0";
+            }
+
         }
 
     }

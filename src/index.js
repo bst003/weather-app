@@ -4,13 +4,7 @@ import { pubsub } from "./modules/pubsub";
 import { domFunctions } from "./modules/domStuff";
 import { weatherFunctions } from "./modules/weather";
 
-// console.log(pubsub);
-
-weatherFunctions.getData("Hershey, PA, US");
-
 pubsub.publish("pageLoad");
-
-console.log("hello wepback");
 
 /*
 
