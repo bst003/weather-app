@@ -4,12 +4,6 @@ const domFunctions = (() => {
     // Private variables/functions
     const _results = document.querySelector("#results");
 
-    const _clearContent = (parent) => {
-        while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
-        }
-    };
-
     const _addAttributesLoop = (element, object, dataPrefix) => {
         let prefix = "";
         if (dataPrefix) {
@@ -19,6 +13,34 @@ const domFunctions = (() => {
         Object.entries(object).forEach(([key, value]) => {
             element.setAttribute(`data-${prefix}${key}`, value);
         });
+    };
+
+    const _clearContent = (parent) => {
+        console.log("cleared content");
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    };
+
+    const _clearListener = (elementName, listenerName, functionName) => {
+        const element = document.querySelector(`${elementName}`);
+
+        if (element !== null) {
+            element.removeEventListener(listenerName, functionName);
+            console.log(
+                `Listener for ${listenerName} on ${elementName} has been removed`
+            );
+        }
+    };
+
+    const _processWeatherForm = (e) => {
+        e.preventDefault();
+
+        const location = document.querySelector("#location").value;
+
+        console.log("form submitted");
+
+        pubsub.publish("submitForm", location);
     };
 
     const _toggleUnits = (e) => {
@@ -54,16 +76,6 @@ const domFunctions = (() => {
         console.log(resultBox);
     };
 
-    const _processWeatherForm = (e) => {
-        e.preventDefault();
-
-        const location = document.querySelector("#location").value;
-
-        console.log("form submitted");
-
-        pubsub.publish("submitForm", location);
-    };
-
     // Public variables/functions
     const addFormListeners = () => {
         const form = document.querySelector("form");
@@ -72,6 +84,7 @@ const domFunctions = (() => {
     };
 
     const clearResults = () => {
+        _clearListener(".toggle", "click", _toggleUnits);
         _clearContent(_results);
     };
 
