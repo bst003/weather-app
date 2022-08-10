@@ -96,6 +96,12 @@ const domFunctions = (() => {
 
         resultBox.appendChild(weatherData);
 
+        const toggleButton = document.createElement("button");
+        toggleButton.classList.add("toggle");
+        toggleButton.innerText = "Show Celsius";
+
+        resultBox.appendChild(toggleButton);
+
         _results.appendChild(resultBox);
     };
 
